@@ -33,12 +33,13 @@ $FixContent = (function($limit, $page){
 });
 
 $page = 0;
+$limit = 30;
 $running = true;
 
 while ($running){
-   $running = $FixContent(30, $page++);
+   $running = $FixContent($limit, $page++);
    if($running){
-       echo "Check to: " . $page * $running;
+       echo "Check to: " . $page * $limit;
        sleep(30);
    } else {
        echo "Done!";
