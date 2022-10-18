@@ -1,0 +1,6 @@
+{
+    "name": "admin/fix-link-die",
+    "require": {
+        "envms/fluentpdo": "^2.2.0"
+    }
+}
