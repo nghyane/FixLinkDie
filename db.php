@@ -3,7 +3,7 @@
 use Envms\FluentPDO\Query;
 
 $DB_NAME = "truyen";
-$DB_HOST = "103.169.35.177";
+$DB_HOST = "localhost";
 $DB_PASS = "Xix4BRtx5kWCRyA5";
 $DB_USER = "truyen";
 
