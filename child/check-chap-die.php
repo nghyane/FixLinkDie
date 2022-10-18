@@ -21,8 +21,8 @@ foreach ($images as $url){
     $die++;
     if($die >= 1){
         try {
-            $DB = DB()->deleteFrom('chapter_data', $data->id);
-            $DB = DB()->deleteFrom('chapters', $data->chapter_id);
+            $DB = DB()->deleteFrom('chapter_data', $data->id)->execute();
+            $DB = DB()->deleteFrom('chapters', $data->chapter_id)->execute();
         } catch (\Envms\FluentPDO\Exception $e){
 
         }
