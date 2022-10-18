@@ -11,7 +11,6 @@ $FixContent = (function($limit, $page){
     $DB = DB();
 
     $log_file = 'logs.txt';
-    $pid = [];
 
     $query = $DB->from('chapter_data')
         ->limit($limit)
@@ -21,15 +20,27 @@ $FixContent = (function($limit, $page){
 
     $datas = $query->asObject()->fetchAll();
 
+    if(empty($datas)){
+        return false;
+    }
     foreach ($datas as $data){
         file_put_contents('pid/' . $data->id . '.txt', (json_encode($data)));
-        #>> $log_file & echo $!;
-        system("php child/check-chap-die.php $data->id");
-
-        exit();
+        #
+        exec("php child/check-chap-die.php $data->id >> $log_file & echo $!;");
     }
 
+    return  true;
 });
 
+$page = 0;
+$running = true;
 
-$FixContent(10, 0);
+while ($running){
+   $running = $FixContent(30, $page++);
+   if($running){
+       echo "Check to: " . $page * $running;
+       sleep(30);
+   } else {
+       echo "Done!";
+   }
+}

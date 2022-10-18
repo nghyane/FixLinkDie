@@ -32,8 +32,4 @@ foreach ($images as $url){
 // Done!
 }
 
-if($die == 0){
-    echo $data->source .PHP_EOL;
-}
-
 unlink(__DIR__ . '/../pid/' . $id . '.txt');

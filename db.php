@@ -7,11 +7,16 @@ $DB_HOST = "localhost";
 $DB_PASS = "Xix4BRtx5kWCRyA5";
 $DB_USER = "truyen";
 
-$REMOTE_CONN = new PDO(
-    "mysql:dbname=$DB_NAME;host=$DB_HOST;port=3306;charset=utf8mb4",
-    $DB_USER,
-    $DB_PASS
-);
+try {
+    $REMOTE_CONN = new PDO(
+        "mysql:dbname=$DB_NAME;host=$DB_HOST;port=3306;charset=utf8mb4",
+        $DB_USER,
+        $DB_PASS
+    );
+}
+catch (PDOException $e){
+    die($e);
+}
 
 function DB(): Query {
     global $REMOTE_CONN;
