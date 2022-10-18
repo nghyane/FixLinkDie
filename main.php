@@ -39,7 +39,7 @@ $running = true;
 while ($running){
    $running = $FixContent($limit, $page++);
    if($running){
-       echo "Check to: " . $page * $limit;
+       echo "Check to: " . $page * $limit .PHP_EOL;
        sleep(30);
    } else {
        echo "Done!";
